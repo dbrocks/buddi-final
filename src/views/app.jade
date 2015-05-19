@@ -1,0 +1,44 @@
+extends ./base.jade
+block append style
+    link(rel="stylesheet", type="text/css", href="/assets/style.css")
+block body
+  nav
+    a(href="/home")
+      img#logoSmall(src="/assets/img/logoSmall.png", alt="small logo")
+    .navlink
+      a(href="/logout") Log out
+  section#makePet
+    form#petForm(class="petForm", name="petForm", action="/maker", method="POST")
+      label(for="name") Name: 
+      input#petName(type="text", name="name", placeholder="Pet Name")
+      label(for="age") Age: 
+      input#petAge(type="text", name="age", placeholder="Pet Age")
+      label(for="species") Species:
+      input#petSpecies(type="text", name="species", placeholder="Species")
+      label(for="species") Color:
+      input#petColor(type="text", name="color", placeholder="Color")
+      label(for="species") Personality:
+      input#petPersonality(type="text", name="personality", placeholder="Vivacious")
+      label(for="species") Bio:
+      input#petBio(type="text", name="bio", placeholder="Bio")
+    section#makePetButton
+      a#makePetSubmit(class="makePetSubmit", href="#") Add Pet
+    form#removePetForm(class="petForm", name="removePetForm", action="/remove", method="POST")  
+      label(for="name") Name: 
+      input#petName(type="text", name="name", placeholder="Pet Name")
+      a#removePetSubmit(class="removePetSubmit", href="#") Remove Pet
+  section#pets
+    if !pets || pets.length == 0
+        div.pet
+            h3.emptyPet No Pets Yet!
+    else
+        each val in pets
+            div.pet
+                img(class="petFace", src="/assets/img/default.jpg", alt="default")
+                h3.petName Name: #{val.name}
+                h3.petAge Age: #{val.age}
+                a(id="#{val.name}" class="additionalInfo", href="#") Additional Information
+                p
+                a(href="/chat", class="petChat") My Story
+block scripts
+        script(src="/assets/maker.js")

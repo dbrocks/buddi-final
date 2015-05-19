@@ -1,0 +1,20 @@
+extends ./base.jade
+block append style
+    link(rel="stylesheet", type="text/css", href="/assets/style.css")
+block body
+   nav
+    a(href="/home")
+      img#logoSmall(src="/assets/img/logoSmall.png", alt="small logo")
+    .navlink
+      a(href="/login") Login
+    .navlink
+      a(href="/signup") Sign Up
+    a(href="/home")
+      img#logoTag(src="/assets/img/logoTag.png", alt="tagline logo")
+   section#contact
+    form#emailForm(class="emailForm", name="emailForm", action="/remove", method="POST") 
+      label(for="name") Why Make An Account? 
+      p
+      label(for="name") Creating a profile takes less than five minutes, all you have to do is fill out your furry friend's interests and whimsies. Immediately, a carousel of potential friendships will be at your fingertips. Every match is tailored for your pet's unique personality. Simply swipe right on an interesting profile and, if the other owner does the same, you will have be able to chat with your new friend. Swiping to the left will hide the profile, and help us come up with more accurate matches in the future.
+block scripts
+    script(src="/assets/client.js")

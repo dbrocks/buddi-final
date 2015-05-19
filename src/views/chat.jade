@@ -1,0 +1,26 @@
+extends ./base.jade
+block append style
+    link(rel="stylesheet", type="text/css", href="/assets/style.css")
+block body
+  nav
+    a(href="/home")
+      img#logoSmall(src="/assets/img/logoSmall.png", alt="small logo")
+    .navlink
+      a(href="/logout") Log out
+  section#makePet
+    form#petForm(class="petForm", name="petForm", action="/maker", method="POST")
+      label(for="message") Message: 
+      input#petPost(type="text", name="message", placeholder="Story Post")
+    section#makePetButton
+      a#makePetPost(class="petMessageSubmit", href="#") Add Message
+  section#petMessages
+    if !pets || pets.length == 0
+        div.pet
+            h3.emptyPet Begin your story.
+    else
+        each val in pets
+            div.pet
+                img(class="petFace", src="/assets/img/default.jpg", alt="default")
+                h3.petMessage Message: #{val.message}
+block scripts
+        script(src="/assets/maker.js")

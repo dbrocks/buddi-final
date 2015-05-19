@@ -1,0 +1,37 @@
+extends ./base.jade
+block append style
+    link(rel="stylesheet", type="text/css", href="/assets/style.css")
+block body
+   nav
+    a(href="/home")
+      img#logoSmall(src="/assets/img/logoSmall.png", alt="small logo")
+    .navlink
+      a(href="/login") Login
+    .navlink
+      a(href="/signup") Sign up
+    a(href="/home")
+      img#logoTag(src="/assets/img/logoTag.png", alt="tagline logo")
+    div.email
+      form(action="/contact", name="contactus", class="emailForm", method="post")
+        fieldset
+          p
+            label(for="name") Name:
+            br
+            input(name="name", type="text", value="", id="name")
+          p
+            label(for="email") Email:
+            br
+            input(name="email", type="text", value="", id="email")
+          p
+            label(for="message") Message:
+            br
+            textarea(name="message", cols="40", rows="10", id="message")
+            if(typeof msg !== "undefined")
+              if(!!err)
+                div(class="msgbox err") #{msg}
+            else
+                div(class="msgbox success") #{msg}
+          p
+            input(name="submit", type="submit", value="Send", id="submit")
+block scripts
+    script(src="/assets/client.js")

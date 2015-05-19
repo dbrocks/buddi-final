@@ -1,0 +1,16 @@
+extends ./base.jade
+block append style
+    link(rel="stylesheet", type="text/css", href="/assets/style.css")
+block body
+    a(href="/home")
+      img#logoTag(src="/assets/img/logoTag.png", alt="tagline logo")
+    .homenavlink
+      a(href="/login") Login
+    .homenavlink
+      a(href="/signup") Sign up
+    .contactnavlink
+      a(href="/contact") Contact
+    .helpnavlink
+      a(href="/help") Help
+block scripts
+    script(src="/assets/client.js")
